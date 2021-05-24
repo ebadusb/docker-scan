@@ -1,16 +1,16 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: 'SonarQube Scan'
+description: 'Dotnet scanner for SonarQube'
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+  option:  # id of input
+    description: 'start or end scan'
     required: true
-    default: 'World'
+    default: 'start'
 outputs:
   time: # id of output
-    description: 'The time we greeted you'
+    description: 'The time ${{ inputs.who-to-greet }}'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.option }}
